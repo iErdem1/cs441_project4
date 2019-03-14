@@ -1,0 +1,7 @@
+#PyCharm Files
+.idea/
+
+#VirtualEnvironment
+.venv
+venv/
+ENV/
