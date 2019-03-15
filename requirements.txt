@@ -1,0 +1,2 @@
+virtualenv
+kivy >= 1.9

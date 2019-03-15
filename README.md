@@ -1,5 +1,5 @@
-# Project 4 -Title is going to change-
-- Binghamton University Spring 2019 CS441 Gaming for Mobile Platform class "???" project.
+# Project 4 -Cross Platform Image Viewer w/ Kivy&Python-
+- Binghamton University Spring 2019 CS441 Gaming for Mobile Platform class "Image Viewer" project.
 
 ## LICENCE
 
@@ -21,11 +21,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ```
 
 ## Installation
-- Will be updated..
-- Python Installition
-- Virtural env Install
-- Virtual env activation
-- Kivy Install
+- Clone project from Git
+- Use Python version 3.6.x
+- Run <code>pip install -r requirements.txt</code> or install **virtualenv** manually
+- Setup and activate virtualenv <code>virtualenv venv -p python3.6</code>
+- To install Kivy:
+```bash
+    $ sudo add-apt-repository ppa:kivy-team/kivy
+    $ sudo apt-get update
+    $ sudo apt-get install python3-kivy
+```
 
 
 ## Project Description
