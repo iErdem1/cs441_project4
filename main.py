@@ -17,11 +17,31 @@ class Program(App):
 
         self.img_path = "img/"
         self.img_list = list()
-        self.img_order = 0
+        self.img_index = 0
 
         self.counter = 0
 
         self.uploading_text = Label(text="Uploading...")
+
+        self.bar = ProgressBar()
+        self.body = BoxLayout(orientation="vertical")
+
+        self.info = Label(text="[color=#05f]A. Ihsan Erdem[/color] Image Viewer",
+                          markup=True,
+                          size_hint_y=.1)
+        self.img = Image(source=self.img_path+self.img_list[0],
+                         allow_stretch=True,
+                         keep_ratio=True)
+        self.button_bar = BoxLayout(size_hint_y=.15)
+        self.next_button = Button(text='Next',
+                                  size_hint_x=2,
+                                  on_release=self.forward)
+        self.prev_button = Button(text='Previous',
+                                  size_hint_x=.2,
+                                  on_release=self.backward)
+
+    def on_start(self):
+        title = Label(text='Game Development Project 4')
 
     def upload_img(self, file_path):
         file_list = os.listdir(file_path)
@@ -36,16 +56,28 @@ class Program(App):
             self.bar.value = self.counter
 
         self.uploading_text.text("Images Uploaded!")
-        clk.schedule_before(self.start, 1.5)
+        clk.schedule_once(self.start, 1.5)
 
     def build(self):
-        pass
+        self.body.add_widget(self.uploading_text)
+        self.body.add_widget(self.bar)
 
-    def start(self):
-        pass
+        clk.schedule_once(lambda event=None: self.upload_img(self.img_path), 1)
+        return self.body
 
-    def forward(self):
-        pass
+    def start(self, event=None):
+        self.body.clear_widgets()
+
+        self.button_bar.add_widget(self.prev_button)
+        self.button_bar.add_widget(Widget())
+        self.button_bar.add_widget(self.next_button)
+
+        self.body.add_widget(self.info)
+        self.body.add_widget(self.img)
+        self.body.add_widget(self.button_bar)
+
+    def forward(self, event=None):
+       pass
 
     def backward(self):
         pass

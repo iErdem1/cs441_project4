@@ -22,6 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Installation
 - Will be updated..
+- Python Installition
+- Virtural env Install
+- Virtual env activation
+- Kivy Install
+
 
 ## Project Description
 - Will be updated...
