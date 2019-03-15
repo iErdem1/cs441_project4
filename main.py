@@ -12,7 +12,7 @@ import os
 
 class Program(App):
     def __init__(self, **kwargs):
-        super().__init__(kwargs)
+        super().__init__(**kwargs)
         self.format_list = ["png", "gif", "jpeg", "jpg"]
 
         self.img_path = "img/"
@@ -77,10 +77,32 @@ class Program(App):
         self.body.add_widget(self.button_bar)
 
     def forward(self, event=None):
-       pass
+        self.img_index += 1
+
+        if self.img_index < len(self.img_list):
+            try:
+                self.img.source = self.img_path + self.img_list[self.img_index]
+                self.info.text = self.img_list[self.img_index]
+
+            except Exception as e:
+                self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
+
+        else:
+            try:
+                self.img_index = 0
+                self.img.source = self.img_path + self.img_list[self.img_index]
+                self.info.text = self.img_list[self.img_index]
+
+            except Exception as e:
+                self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
 
     def backward(self):
         pass
+
+
+Program().run()
+
+
 
 
 
