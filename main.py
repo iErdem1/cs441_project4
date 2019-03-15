@@ -29,9 +29,7 @@ class Program(App):
         self.info = Label(text="[color=#05f]A. Ihsan Erdem[/color] Image Viewer",
                           markup=True,
                           size_hint_y=.1)
-        self.img = Image(source=self.img_path+self.img_list[0],
-                         allow_stretch=True,
-                         keep_ratio=True)
+
         self.button_bar = BoxLayout(size_hint_y=.15)
         self.next_button = Button(text='Next',
                                   size_hint_x=2,
@@ -55,7 +53,7 @@ class Program(App):
             self.counter += 1
             self.bar.value = self.counter
 
-        self.uploading_text.text("Images Uploaded!")
+        #self.uploading_text.text("Images Uploaded!")
         clk.schedule_once(self.start, 1.5)
 
     def build(self):
@@ -67,6 +65,10 @@ class Program(App):
 
     def start(self, event=None):
         self.body.clear_widgets()
+
+        self.img = Image(source=self.img_path + self.img_list[0],
+                         allow_stretch=True,
+                         keep_ratio=True)
 
         self.button_bar.add_widget(self.prev_button)
         self.button_bar.add_widget(Widget())
@@ -94,10 +96,27 @@ class Program(App):
                 self.info.text = self.img_list[self.img_index]
 
             except Exception as e:
+                print(e)
                 self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
 
-    def backward(self):
-        pass
+    def backward(self, event=None):
+        self.img_index -= 1
+
+        if self.img_index >= 0:
+            try:
+                self.img.source = self.img_path + self.img_list[self.img_index]
+                self.info.text = self.img_list[self.img_index]
+            except Exception as e:
+                print(e)
+                self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
+        else:
+            try:
+                self.img_index = len(self.img_list) - 1
+                self.img.source = self.img_path + self.img_list[self.img_index]
+                self.info.text = self.img_list[self.img_index]
+            except Exception as e:
+                print(e)
+                self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
 
 
 Program().run()
