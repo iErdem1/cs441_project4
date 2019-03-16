@@ -32,7 +32,7 @@ class Program(App):
 
         self.button_bar = BoxLayout(size_hint_y=.15)
         self.next_button = Button(text='Next',
-                                  size_hint_x=2,
+                                  size_hint_x=.2,
                                   on_release=self.forward)
         self.prev_button = Button(text='Previous',
                                   size_hint_x=.2,
@@ -53,7 +53,6 @@ class Program(App):
             self.counter += 1
             self.bar.value = self.counter
 
-        #self.uploading_text.text("Images Uploaded!")
         clk.schedule_once(self.start, 1.5)
 
     def build(self):
@@ -87,6 +86,7 @@ class Program(App):
                 self.info.text = self.img_list[self.img_index]
 
             except Exception as e:
+                print(e)
                 self.info.text = "Upload Fail: {}".format(self.img_list[self.img_index])
 
         else:

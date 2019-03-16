@@ -1,2 +1,2 @@
 virtualenv
-kivy >= 1.9
+kivy>=1.9
